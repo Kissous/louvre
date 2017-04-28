@@ -1,3 +1,15 @@
 louvre_booking_homepage:
     path:     /
-    defaults: { _controller: LouvreBookingBundle:Default:index }
+    defaults: { _controller: LouvreBookingBundle:Booking:home }
+
+louvre_booking_forget:
+    path:     /billet-perdu
+    defaults: { _controller: LouvreBookingBundle:Booking:forget }
+
+louvre_booking_ticket:
+    path:     /reserver-billet-1
+    defaults: { _controller: LouvreBookingBundle:Booking:ticket }
+
+louvre_booking_user:
+    path:     /reserver-billet-2
+    defaults: { _controller: LouvreBookingBundle:Booking:user }
