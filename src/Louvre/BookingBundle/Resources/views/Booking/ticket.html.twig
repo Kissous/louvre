@@ -1,0 +1,111 @@
+{% extends "LouvreCoreBundle:Core:layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Réservation billet{% endblock %}
+
+{% block body %}
+    <div class="home">
+        <div class="container">
+            <div class="reserver-louvre">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Réservation</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="qnt">Quantité</label>
+                            <div class="col-md-2">
+                                <input id="qnt" name="qnt" type="number" placeholder="" class="form-control input-md" value="1" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="email">Email</label>
+                            <div class="col-md-6">
+                                <input id="email" name="email" type="text" placeholder="email@exemple.com" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="type">Type de billet</label>
+                            <div class="col-md-6">
+                                <select id="type" name="type" class="form-control" required>
+                                    <option selected disabled>Choisir un billet</option>
+                                    <option value="1">Demi-journée</option>
+                                    <option value="2">Journée</option>
+                                </select>
+                                <span class="help-block" id="help-demi-journee">Le billet demi-journée ne permet de rentrer qu’à partir de 14h00.</span>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Jour de la visite</label>
+                            <div class="col-md-6">
+                                <input id="date" name="date" type="text" placeholder="JJ/MM/AAAA" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"></label>
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="singlebutton" class="btn btn-reserv">Valider</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        $.fn.datepicker.dates['fr'] = {
+            days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+            daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+            daysMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+            months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+            monthsShort: ["janv", "févr", "mars", "avr", "mai", "juin", "juil", "août", "sept", "oct", "nov", "déc"],
+            today: "Aujourd'hui",
+        };
+        $(document).ready(function() {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: "dd/mm/yyyy",
+                startDate: "today",
+                language: "fr",
+                daysOfWeekDisabled: "0",
+                autoclose: true,
+                todayHighlight: true,
+                datesDisabled: ['01/05/YYYY', '01/11/YYYY', '25/12/YYYY']
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+    <script>
+        $(function() {
+            $('#help-demi-journee').hide();
+            $('#type').change(function() {
+                if ($('#type').val() == '1') {
+                    $('#help-demi-journee').show(400);
+                } else {
+                    $('#help-demi-journee').hide(400);
+                }
+            });
+        });
+    </script>
+{% endblock %}

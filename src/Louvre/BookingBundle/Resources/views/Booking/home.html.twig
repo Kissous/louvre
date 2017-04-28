@@ -1,7 +1,22 @@
 {% extends "LouvreCoreBundle:Core:layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Booking ?{% endblock %}
+{% block title %}{{ parent() }} - Acceuil{% endblock %}
 
 {% block body %}
-    <h1>Hello world !</h1>
+    <div class="home">
+        <div class="container">
+            <div class="reserver-louvre">
+                <div class="text-center">
+                    <span class="info-louvre">1000 Billets réstant</span>
+                    <h1 class="animated fadeInUp">réservez votre billet maintenant</h1>
+                    <a href="{{ path('louvre_booking_ticket') }}" class="btn btn-reserv">J'achète mon billet</a>
+                    <br />
+                    <div class="billet-perdu">
+                        <a href="{{ path('louvre_booking_forget') }}">Billet perdu ?</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
