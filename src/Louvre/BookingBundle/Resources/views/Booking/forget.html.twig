@@ -3,45 +3,54 @@
 {% block title %}{{ parent() }} - Billet perdu ?{% endblock %}
 
 {% block body %}
-
     <div class="home">
         <div class="container">
             <div class="reserver-louvre">
-                <form class="form-horizontal">
-                    <fieldset>
+                {{ form_start(form, { 'attr' : {'class': 'form-horizontal'}}) }}
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Billet perdu ?</legend>
 
-                        <!-- Form Name -->
-                        <legend>Billet perdu ?</legend>
+                    <!-- Text input-->
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Email">Emailt</label>
-                            <div class="col-md-6">
-                                <input id="Email" name="Email" type="email" placeholder="email@exemple.com" class="form-control input-md" required="">
-                                <span class="help-block">Adresse email utilisée lors de la commande.</span>
-                            </div>
+                    <div class="form-group">
+                        {{ form_label(form.email, 'Email',{
+                            'label_attr':{
+                                'class': 'col-md-4 control-label',
+                                'for': 'Email'
+                            }
+                        })}}
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.email, {
+                                'attr' : {
+                                    'class': 'form-control input-md',
+                                    'placeholder': 'email@exemple.com',
+                                    'required': ''
+                                }
+                            })}}
+                            <span class="help-block">Adresse email utilisée lors de la commande.</span>
                         </div>
+                    </div>
 
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="singlebutton"></label>
-                            <div class="col-md-4">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-reserv">Renvoyer</button>
-                            </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            {{ form_widget(form.envoyer,{
+                                'attr' : {
+                                    'class': 'btn btn-reserv',
+                                    'type': 'submit'
+                                }
+                            })}}
                         </div>
+                    </div>
+                </fieldset>
+                {{ form_end(form) }}
 
-                    </fieldset>
-                </form>
-
-                <br />
-                <div class="billet-perdu">
-                    <a href="#"></a>
-                </div>
 
             </div>
 
         </div>
     </div>
-
-
 {% endblock %}
