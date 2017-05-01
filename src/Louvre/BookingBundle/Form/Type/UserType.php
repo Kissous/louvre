@@ -2,6 +2,7 @@
 
 namespace Louvre\BookingBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -62,7 +63,7 @@ class UserType extends AbstractType
                     'Chili' => 'Chili',
                 )
             ))
-            ->add('button', SubmitType::class)
+            ->add('tarif_reduit', CheckboxType::class, ['required' => true])
             ->getForm()
         ;
     }

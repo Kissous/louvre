@@ -65,6 +65,21 @@ header{
     font-weight: 700;
     text-transform: uppercase;
 }
+.btn-add{
+    background: rgba(255, 255, 255, 0.8);
+    color: #292929;
+    padding: 10px 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.btn-delete{
+    background: rgba(229, 71, 42, 0.8);
+    color: white;
+    padding: 5px 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
 .control-label, .help-block, legend, label{
     text-shadow: 0px 1px 1px #000000;
     color: #ffffff;
@@ -83,14 +98,15 @@ header{
     font-weight: bold;
     display:none;
 }
+.visiteur-form{
+
+}
 #help-demi-journee{
     margin-bottom: 0;
-    display:none;
 }
-
 form{
     padding: 0 15px;
-    
+
 }
 input{
     border: solid 1px #9a9a9a;
@@ -99,7 +115,7 @@ input{
     padding: 15px;
 }
 @media (min-width: 768px) {
-.reserver-louvre{
-    padding: 50px 80px;
-}
+    .reserver-louvre{
+        padding: 50px 80px;
+    }
 }

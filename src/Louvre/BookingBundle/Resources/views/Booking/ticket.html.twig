@@ -6,7 +6,6 @@
     <div class="home">
         <div class="container">
             <div class="reserver-louvre">
-                {{ form(form2) }}
                 {{ form_start(form, { 'attr' : {'class': 'form-horizontal'}}) }}
                 <fieldset>
 
@@ -91,10 +90,14 @@
                         </div>
                     </div>
 
+                    {{ form_row(form.guests) }}
+
+                    <br clear="both" />
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton"></label>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
+                            <a href="#" id="add_guest" class="btn btn-add">Ajouter un visiteur</a>
                             {{ form_widget(form.valider, {
                                 'attr' : {
                                     'class': 'btn btn-reserv',
@@ -141,7 +144,7 @@
     <script>
         $(function() {
             $('#ticket_type_billet').change(function() {
-                if ($('#ticket_type_billet').val() == '1') {
+                if ($('#ticket_type_billet').val() == 'demi_journee') {
                     $('#help-demi-journee').show(400);
                 } else {
                     $('#help-demi-journee').hide(400);
@@ -149,4 +152,8 @@
             });
         });
     </script>
+
+
+
+    <script src="{{ asset('js/form-collection.js') }}"></script>
 {% endblock %}

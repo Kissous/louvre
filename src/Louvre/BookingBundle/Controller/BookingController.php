@@ -24,10 +24,9 @@ class BookingController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $form->getData()["email"];
-            $billet = new Billet();
             $repository = $this->getDoctrine()->getRepository('LouvreBookingBundle:Billet');
             $billet = $repository->findByEmail($email);
-            dump($billet);
+            dump($form);
         }
         return $this->render('LouvreBookingBundle:Booking:forget.html.twig', [
                 'form' => $form -> createView()
@@ -40,15 +39,11 @@ class BookingController extends Controller
         $form = $this->createForm(TicketType::class);
         $form->handleRequest($request);
 
-        $form2 = $this->createForm(TicketType::class);
-        $form2->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             dump($form);
         }
         return $this->render('LouvreBookingBundle:Booking:ticket.html.twig', [
                 'form' => $form -> createView(),
-                'form2' => $form -> createView()
             ]
         );
     }

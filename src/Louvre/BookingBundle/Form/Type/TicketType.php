@@ -4,6 +4,7 @@ namespace Louvre\BookingBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,10 +20,14 @@ class TicketType extends AbstractType
             ->add('email', EmailType::class, ['required' => true])
             ->add('type_billet', ChoiceType::class, array(
                 'choices'  => array(
-                    'Choisir un billet' => null,
-                        'Demi-journée' => 'demi_journee',
-                        'Journée' => 'journee',
+                    'Journée' => 'journee',
+                    'Demi-journée' => 'demi_journee',
                 ),
+            ))
+            ->add('guests', CollectionType::class, array(
+                'entry_type'   => UserType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
             ))
             ->add('date_visite', TextType::class, ['required' => true])
             ->add('valider', SubmitType::class)
