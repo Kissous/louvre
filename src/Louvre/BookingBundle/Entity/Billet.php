@@ -3,6 +3,7 @@
 namespace Louvre\BookingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Billet
@@ -25,6 +26,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Choice({"journee", "demi_journee"})
      */
     private $type;
 
@@ -32,6 +34,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -39,6 +42,7 @@ class Billet
      * @var \DateTime
      *
      * @ORM\Column(name="jour", type="date")
+     * @Assert\Date()
      */
     private $jour;
 
@@ -53,6 +57,7 @@ class Billet
      * @var \DateTime
      *
      * @ORM\Column(name="dateRes", type="date")
+     * @Assert\DateTime()
      */
     private $dateRes;
 

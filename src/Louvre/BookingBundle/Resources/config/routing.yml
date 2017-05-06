@@ -7,9 +7,9 @@ louvre_booking_forget:
     defaults: { _controller: LouvreBookingBundle:Booking:forget }
 
 louvre_booking_ticket:
-    path:     /reserver-billet-1
+    path:     /reservation
     defaults: { _controller: LouvreBookingBundle:Booking:ticket }
 
-louvre_booking_user:
-    path:     /reserver-billet-2
-    defaults: { _controller: LouvreBookingBundle:Booking:user }
+louvre_booking_checkout:
+    path:     /payement
+    defaults: { _controller: LouvreBookingBundle:Booking:checkout }

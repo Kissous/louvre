@@ -31,6 +31,7 @@ class Visiteur
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $nom;
 
@@ -38,6 +39,7 @@ class Visiteur
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $prenom;
 
@@ -45,6 +47,7 @@ class Visiteur
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $pays;
 
@@ -52,6 +55,7 @@ class Visiteur
      * @var DateTime
      *
      * @ORM\Column(name="dateNais", type="date")
+     * @Assert\Date()
      */
     private $dateNais;
 
@@ -59,6 +63,7 @@ class Visiteur
      * @var bool
      *
      * @ORM\Column(name="tarifReduit", type="boolean")
+     * @Assert\Type("bool")
      */
     private $tarifReduit;
 

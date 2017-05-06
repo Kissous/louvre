@@ -1,0 +1,78 @@
+{% extends "LouvreCoreBundle:Core:layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Acceuil{% endblock %}
+
+{% block body %}
+    <div class="home">
+        <div class="container">
+            <div class="reserver-louvre">
+
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Réservation</div>
+                    <div class="panel-body">
+                        <p>
+                        <p>E-mail : <b>{{ data['email'] }}</b></p>
+                        <p>Date de visite : <b>{{ data['date_visite'] }}</b></p>
+                        <p>Type de billet : <b>{{ data['type_billet'] }}</b></p>
+                        <p>Total à payer : <b>1.00 €</b></p>
+                        </p>
+                    </div>
+
+                    <!-- Table -->
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom et prénom</th>
+                            <th>Date de naissence</th>
+                            <th>Pays</th>
+                            <th>Tarif</th>
+                            <th>Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for guest in guests %}
+                            <tr>
+                                <td scope="row">{{ loop.index }}</td>
+                                <td>{{ guest.nom }} {{ guest.prenom }}</td>
+                                <td>{{ guest.date_nais }}</td>
+                                <td>{{ guest.pays }}</td>
+                                <td>
+                                {% if guest.tarif_reduit == 1 %}
+                                    Réduit
+                                {% else %}
+                                    Normal
+                                {% endif %}
+                                </td>
+                                <td>1.00 €</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td>Pas de visiteurs</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <center style="margin: 20px;">
+                        <form action="/your-server-side-code" method="POST">
+                            <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                                    data-amount="2000"
+                                    data-name="Stripe.com"
+                                    data-description="2 widgets"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="auto"
+                                    data-zip-code="true">
+                            </script>
+                        </form>
+                    </center>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

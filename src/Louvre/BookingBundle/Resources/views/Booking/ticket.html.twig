@@ -6,6 +6,9 @@
     <div class="home">
         <div class="container">
             <div class="reserver-louvre">
+                {% for message in app.session.flashbag.get('info') %}
+                    <p class="bg-info">{{ message }}</p>
+                {% endfor %}
                 {{ form_start(form, { 'attr' : {'class': 'form-horizontal'}}) }}
                 <fieldset>
 

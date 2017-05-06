@@ -2,11 +2,10 @@
 
 namespace Louvre\BookingBundle\Controller;
 
-use Louvre\BookingBundle\Entity\Billet;
 use Louvre\BookingBundle\Form\Type\ForgetType;
 use Louvre\BookingBundle\Form\Type\TicketType;
-use Louvre\BookingBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -40,24 +39,39 @@ class BookingController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($form);
+            $validator = $this->get('validator');
+            $listErrors = $validator->validate($form);
+            $session = $request->getSession();
+            if(count($listErrors) > 0) {
+                $session->getFlashBag()->add('info', $listErrors);
+            } else {
+                //return $this->redirectToRoute('louvre_booking_checkout');
+                $data = $form->getData();
+                dump($data);
+                return $this->render('LouvreBookingBundle:Booking:checkout.html.twig', array(
+                    'guests'  => $data['guests'],
+                    'data' => $data,
+                ));
+            }
+        }else{
+            return $this->render('LouvreBookingBundle:Booking:ticket.html.twig', [
+                    'form' => $form -> createView(),
+                ]
+            );
         }
-        return $this->render('LouvreBookingBundle:Booking:ticket.html.twig', [
-                'form' => $form -> createView(),
-            ]
-        );
     }
 
-    public function userAction(Request $request)
+    public function checkoutAction()
     {
-        $form = $this->createForm(UserType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            dump($form);
-        }
-        return $this->render('LouvreBookingBundle:Booking:user.html.twig', [
-                'form' => $form -> createView()
-            ]
-        );
+        return $this->render('LouvreBookingBundle:Booking:checkout.html.twig', array(
+            'nom'  => $data['guests'][0]['nom'],
+            'prenom' => $data['guests'][0]['prenom'],
+            'date_nais' => '12/08/1994',
+            'pays' => 'Algerie',
+            'tarif' => 'Réduit',
+            'email' => $data['email'],
+            'date_visite' => $data['date_visite'],
+            'type_billet' => $data['type_billet'],
+        ));
     }
 }
