@@ -9,12 +9,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class UserType extends AbstractType
+class GuestType extends AbstractType
 {
     public function BuildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', TextType::class, ['required' => true])
+            ->add('nom', TextType::class, ['required' => true,
+                'attr' => ['class'=>'name', 'smail'=>'omar'],
+                'label_attr'=>
+                    ['class'=>'label_name']])
             ->add('prenom', TextType::class, ['required' => true])
             ->add('date_nais', TextType::class, ['required' => true])
             ->add('pays', ChoiceType::class, array(

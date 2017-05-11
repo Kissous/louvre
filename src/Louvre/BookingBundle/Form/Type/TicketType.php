@@ -25,7 +25,7 @@ class TicketType extends AbstractType
                 ),
             ))
             ->add('guests', CollectionType::class, array(
-                'entry_type'   => UserType::class,
+                'entry_type'   => GuestType::class,
                 'allow_add'    => true,
                 'allow_delete' => true,
             ))

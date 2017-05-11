@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="billet")
  * @ORM\Entity(repositoryClass="Louvre\BookingBundle\Repository\BilletRepository")
  */
-class Billet
+class Ticket
 {
     /**
      * @var int
@@ -77,7 +77,7 @@ class Billet
      *
      * @param string $type
      *
-     * @return Billet
+     * @return Ticket
      */
     public function setType($type)
     {
@@ -101,7 +101,7 @@ class Billet
      *
      * @param string $email
      *
-     * @return Billet
+     * @return Ticket
      */
     public function setEmail($email)
     {
@@ -125,7 +125,7 @@ class Billet
      *
      * @param \DateTime $jour
      *
-     * @return Billet
+     * @return Ticket
      */
     public function setJour($jour)
     {
@@ -149,7 +149,7 @@ class Billet
      *
      * @param string $code
      *
-     * @return Billet
+     * @return Ticket
      */
     public function setCode($code)
     {
@@ -173,7 +173,7 @@ class Billet
      *
      * @param \DateTime $dateRes
      *
-     * @return Billet
+     * @return Ticket
      */
     public function setDateRes($dateRes)
     {

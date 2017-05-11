@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="visiteur")
  * @ORM\Entity(repositoryClass="Louvre\BookingBundle\Repository\VisiteurRepository")
  */
-class Visiteur
+class Guest
 {
     /**
      * @ORM\ManyToOne(targetEntity="Billet")
@@ -83,7 +83,7 @@ class Visiteur
      *
      * @param string $nom
      *
-     * @return Visiteur
+     * @return Guest
      */
     public function setNom($nom)
     {
@@ -107,7 +107,7 @@ class Visiteur
      *
      * @param string $prenom
      *
-     * @return Visiteur
+     * @return Guest
      */
     public function setPrenom($prenom)
     {
@@ -131,7 +131,7 @@ class Visiteur
      *
      * @param string $pays
      *
-     * @return Visiteur
+     * @return Guest
      */
     public function setPays($pays)
     {
@@ -155,7 +155,7 @@ class Visiteur
      *
      * @param string $dateNais
      *
-     * @return Visiteur
+     * @return Guest
      */
     public function setDateNais($dateNais)
     {
@@ -179,7 +179,7 @@ class Visiteur
      *
      * @param boolean $tarifReduit
      *
-     * @return Visiteur
+     * @return Guest
      */
     public function setTarifReduit($tarifReduit)
     {
@@ -201,11 +201,11 @@ class Visiteur
     /**
      * Set billet
      *
-     * @param \Louvre\BookingBundle\Entity\Billet $billet
+     * @param \Louvre\BookingBundle\Entity\Ticket $billet
      *
-     * @return Visiteur
+     * @return Guest
      */
-    public function setBillet(Billet $billet)
+    public function setBillet(Ticket $billet)
     {
         $this->billet = $billet;
 
@@ -215,7 +215,7 @@ class Visiteur
     /**
      * Get billet
      *
-     * @return \Louvre\BookingBundle\Entity\Billet
+     * @return \Louvre\BookingBundle\Entity\Ticket
      */
     public function getBillet()
     {

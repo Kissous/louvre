@@ -64,14 +64,7 @@ class BookingController extends Controller
     public function checkoutAction()
     {
         return $this->render('LouvreBookingBundle:Booking:checkout.html.twig', array(
-            'nom'  => $data['guests'][0]['nom'],
-            'prenom' => $data['guests'][0]['prenom'],
-            'date_nais' => '12/08/1994',
-            'pays' => 'Algerie',
-            'tarif' => 'Réduit',
-            'email' => $data['email'],
-            'date_visite' => $data['date_visite'],
-            'type_billet' => $data['type_billet'],
+
         ));
     }
 }
